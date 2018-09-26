@@ -179,7 +179,7 @@ echo -e "$OK ${GREEN}[TODO OK!]${NOCOL} Comenzamos a crear el diccionario"
 echo
 echo -e "Palabras de entrada: \t\t$LINEAS"
 echo -e "Combinaciones máximas a crear: $(tput bold)\t$(expr $LINEAS \* $COMBOS ) $(tput sgr0)"
-echo -e "Tamaño de fichero máximo:\t$(expr $LINEAS \* 337)MB"
+echo -e "Tamaño de fichero máximo:\t$(expr $LINEAS \* 321)MB"
 echo
 
 sleep  5
