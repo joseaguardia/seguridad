@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.1"
+VERSION="1.2"
 
 clear
 
@@ -14,7 +14,7 @@ OK="[${GREEN}✓${NOCOL}]"
 KO="[${RED}✗${NOCOL}]"
 
 #Editar esta variable para quitar/añadir símbolos
-SIMBOLOS=",.-_!%*+\$"
+CARACTERES="-_!,.%*+\$"
 
 VERBOSE=0
 SECONDS=0
@@ -342,130 +342,130 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
 
         #Añadimos un símbolo detrás
-        for (( i=0; i<${#SIMBOLOS}; i++ ))
+        grep -o . <<< $CARACTERES | while read SIMBOLOS
         do
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}'$NOCOL"
             fi
-            echo "${NOMBRE}${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "${NOMBRE}${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:])${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:])${SIMBOLOS}" >> $SALIDA
 
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | rev)${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | rev)${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | rev)${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | rev)${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | rev | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | rev | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | rev | tr [:lower:] [:upper:])${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | rev | tr [:lower:] [:upper:])${SIMBOLOS}" >> $SALIDA
 
 
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | sed 'y/sSaeioAeio/$$43104310/')${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | sed 'y/sSaeioAeio/$$43104310/')${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/aeioAEIO/43104310/')${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/aeioAEIO/43104310/')${SIMBOLOS}" >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4B3C3D4R10S${SIMBOLOS:$1:1}'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4B3C3D4R10S${SIMBOLOS}'$NOCOL"
             fi
-            echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:] | sed 'y/aeioAEIO/43104310/')${SIMBOLOS:$1:1}" >> $SALIDA
+            echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:] | sed 'y/aeioAEIO/43104310/')${SIMBOLOS}" >> $SALIDA
 
 
 
             if [[ $NOMBRE == *[Ss]* ]]; then
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed 'y/sS/$$/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed 'y/sS/$$/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/sS/$$/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/sS/$$/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/sS/$$/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/sS/$$/')${SIMBOLOS}" >> $SALIDA
 
             fi
 
             if [[ $NOMBRE == *[aA]* ]]; then
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed 'y/aA/44/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed 'y/aA/44/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/aA/44/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/aA/44/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/aA/44/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/aA/44/')${SIMBOLOS}" >> $SALIDA
             fi
 
             if [[ $NOMBRE == *[eE]* ]]; then
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed 'y/eE/33/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed 'y/eE/33/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/eE/33/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/eE/33/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/eE/33/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/eE/33/')${SIMBOLOS}" >> $SALIDA
             fi
 
             if [[ $NOMBRE == *[iI]* ]]; then
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed 'y/iI/11/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed 'y/iI/11/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/iI/11/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/iI/11/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/iI/11/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/iI/11/')${SIMBOLOS}" >> $SALIDA
             fi
 
             if [[ $NOMBRE == *[oO]* ]]; then
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed 'y/oO/00/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed 'y/oO/00/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/oO/00/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | sed -e 's/^./\U&/g; s/ ./\U&/g' | sed 'y/oO/00/')${SIMBOLOS}" >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}'$NOCOL"
                 fi
-                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/oO/00/')${SIMBOLOS:$1:1}" >> $SALIDA
+                echo "$(echo ${NOMBRE} | tr [:lower:] [:upper:]| sed 'y/oO/00/')${SIMBOLOS}" >> $SALIDA
             fi
 
         done
@@ -668,324 +668,324 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
         #Simbolo entre nombre y secuencia de números
 
-        for (( i=0; i<${#SIMBOLOS}; i++ ))
+        grep -o . <<< $CARACTERES | while read SIMBOLOS
         do
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}0 -> abecedarios${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}0 -> abecedarios${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e ${NOMBRE}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NOMBRE}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}00 -> abecedarios${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}00 -> abecedarios${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e ${NOMBRE}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NOMBRE}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}000 -> abecedarios${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}000 -> abecedarios${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NOMBRE}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NOMBRE}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}0000 -> abecedarios${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}0000 -> abecedarios${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NOMBRE}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NOMBRE}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}010100 -> abecedarios${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}010100 -> abecedarios${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NOMBRE}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NOMBRE}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS:$1:1}01011950 -> abecedarios${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedarios${SIMBOLOS}01011950 -> abecedarios${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NOMBRE}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NOMBRE}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}0 -> Abecedarios${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}0 -> Abecedarios${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e ${NCAP}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAP}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}00 -> Abecedarios${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}00 -> Abecedarios${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e ${NCAP}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAP}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}000 -> Abecedarios${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}000 -> Abecedarios${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NCAP}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAP}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}0000 -> Abecedarios${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}0000 -> Abecedarios${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NCAP}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAP}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}010100 -> Abecedarios${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}010100 -> Abecedarios${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NCAP}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAP}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS:$1:1}01011950 -> Abecedarios${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedarios${SIMBOLOS}01011950 -> Abecedarios${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NCAP}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAP}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}0 -> ABECEDARIOS${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}0 -> ABECEDARIOS${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e $(echo ${NOMBRE} | tr [:lower:] [:upper:])${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e $(echo ${NOMBRE} | tr [:lower:] [:upper:])${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}00 -> ABECEDARIOS${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}00 -> ABECEDARIOS${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e $(echo ${NOMBRE} | tr [:lower:] [:upper:])${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e $(echo ${NOMBRE} | tr [:lower:] [:upper:])${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}000 -> ABECEDARIOS${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}000 -> ABECEDARIOS${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NMAY}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NMAY}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}0000 -> ABECEDARIOS${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}0000 -> ABECEDARIOS${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NMAY}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NMAY}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}010100 -> ABECEDARIOS${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}010100 -> ABECEDARIOS${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NMAY}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NMAY}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS:$1:1}01011950 -> ABECEDARIOS${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIOS${SIMBOLOS}01011950 -> ABECEDARIOS${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NMAY}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NMAY}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}0 -> soiradeceba${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}0 -> soiradeceba${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e ${NREV}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREV}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}00 -> soiradeceba${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}00 -> soiradeceba${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e ${NREV}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREV}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}000 -> soiradeceba${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}000 -> soiradeceba${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NREV}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREV}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}0000 -> soiradeceba${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}0000 -> soiradeceba${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NREV}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREV}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}010100 -> soiradeceba${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}010100 -> soiradeceba${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NREV}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREV}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS:$1:1}01011950 -> soiradeceba${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradeceba${SIMBOLOS}01011950 -> soiradeceba${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NREV}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREV}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}0 -> Soiradeceba${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}0 -> Soiradeceba${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e $(echo ${NOMBRE} | rev | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e $(echo ${NOMBRE} | rev | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}00 -> Soiradeceba${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}00 -> Soiradeceba${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e $(echo ${NOMBRE} | rev | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e $(echo ${NOMBRE} | rev | sed -e 's/^./\U&/g; s/ ./\U&/g')${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}000 -> Soiradeceba${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}000 -> Soiradeceba${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NREVCAP}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVCAP}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}0000 -> Soiradeceba${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}0000 -> Soiradeceba${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NREVCAP}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVCAP}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}010100 -> Soiradeceba${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}010100 -> Soiradeceba${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NREVCAP}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVCAP}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS:$1:1}01011950 -> Soiradeceba${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Soiradeceba${SIMBOLOS}01011950 -> Soiradeceba${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NREVCAP}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVCAP}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}0 -> soiradecebA${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}0 -> soiradecebA${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e ${NCAPREV}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAPREV}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}00 -> soiradecebA${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}00 -> soiradecebA${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e ${NCAPREV}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAPREV}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}000 -> soiradecebA${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}000 -> soiradecebA${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NCAPREV}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAPREV}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}0000 -> soiradecebA${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}0000 -> soiradecebA${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NCAPREV}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAPREV}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}010100 -> soiradecebA${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}010100 -> soiradecebA${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NCAPREV}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAPREV}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS:$1:1}01011950 -> soiradecebA${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'soiradecebA${SIMBOLOS}01011950 -> soiradecebA${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NCAPREV}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NCAPREV}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}0 -> SOIRADECEBA${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}0 -> SOIRADECEBA${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e ${NREVMAY}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVMAY}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}00 -> SOIRADECEBA${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}00 -> SOIRADECEBA${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e ${NREVMAY}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVMAY}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}000 -> SOIRADECEBA${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}000 -> SOIRADECEBA${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${NREVMAY}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVMAY}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}0000 -> SOIRADECEBA${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}0000 -> SOIRADECEBA${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${NREVMAY}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVMAY}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}010100 -> SOIRADECEBA${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}010100 -> SOIRADECEBA${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${NREVMAY}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVMAY}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS:$1:1}01011950 -> SOIRADECEBA${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'SOIRADECEBA${SIMBOLOS}01011950 -> SOIRADECEBA${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${NREVMAY}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${NREVMAY}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             N="$(sed 'y/aeioAeio/43104310/' <<< $NOMBRE)"
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}0 -> 4b3c3d4r10s${SIMBOLOS:$1:1}9'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}0 -> 4b3c3d4r10s${SIMBOLOS}9'$NOCOL"
             fi
-            echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}00 -> 4b3c3d4r10s${SIMBOLOS:$1:1}99'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}00 -> 4b3c3d4r10s${SIMBOLOS}99'$NOCOL"
             fi
-            echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}000 -> 4b3c3d4r10s${SIMBOLOS:$1:1}999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}000 -> 4b3c3d4r10s${SIMBOLOS}999'$NOCOL"
             fi
-            echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}0000 -> 4b3c3d4r10s${SIMBOLOS:$1:1}9999'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}0000 -> 4b3c3d4r10s${SIMBOLOS}9999'$NOCOL"
             fi
-            echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}010100 -> 4b3c3d4r10s${SIMBOLOS:$1:1}311299'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}010100 -> 4b3c3d4r10s${SIMBOLOS}311299'$NOCOL"
             fi
-            echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
             if [ $VERBOSE = 1 ]; then
-                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS:$1:1}01011950 -> 4b3c3d4r10s${SIMBOLOS:$1:1}31122020'$NOCOL"
+                echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10s${SIMBOLOS}01011950 -> 4b3c3d4r10s${SIMBOLOS}31122020'$NOCOL"
             fi
-            echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
             N="$(sed -e 's/^./\U&/g; s/ ./\U&/g' <<< $NOMBRE | sed 'y/aeioAeio/43104310/')"
-            echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
-            echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
-            echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
-            echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
-            echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
-            echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+            echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             if [[ $NOMBRE == *[Ss]* ]]; then
 
                 N="$(sed 'y/sSaeioAeio/$$43104310/' <<< $NOMBRE)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS:$1:1}0 -> 4b3c3d4r10\$${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS}0 -> 4b3c3d4r10\$${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS:$1:1}00 -> 4b3c3d4r10\$${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS}00 -> 4b3c3d4r10\$${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS:$1:1}000 -> 4b3c3d4r10\$${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS}000 -> 4b3c3d4r10\$${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS:$1:1}0000 -> 4b3c3d4r10\$${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS}0000 -> 4b3c3d4r10\$${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS:$1:1}010100 -> 4b3c3d4r10\$${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS}010100 -> 4b3c3d4r10\$${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS:$1:1}01011950 -> 4b3c3d4r10\$${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4b3c3d4r10\$${SIMBOLOS}01011950 -> 4b3c3d4r10\$${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/sS/$$/' <<< $NOMBRE)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}0 -> abecedario\$${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}0 -> abecedario\$${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}00 -> abecedario\$${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}00 -> abecedario\$${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}000 -> abecedario\$${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}000 -> abecedario\$${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}0000 -> abecedario\$${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}0000 -> abecedario\$${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}010150 -> abecedario\$${SIMBOLOS:$1:1}311220'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}010150 -> abecedario\$${SIMBOLOS}311220'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS:$1:1}01011950 -> abecedario\$${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedario\$${SIMBOLOS}01011950 -> abecedario\$${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/sS/$$/' <<< $NCAP)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}0 -> Abecedario\$${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}0 -> Abecedario\$${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}00 -> Abecedario\$${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}00 -> Abecedario\$${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}000 -> Abecedario\$${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}000 -> Abecedario\$${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}0000 -> Abecedario\$${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}0000 -> Abecedario\$${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}010100 -> Abecedario\$${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}010100 -> Abecedario\$${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS:$1:1}01011950 -> Abecedario\$${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedario\$${SIMBOLOS}01011950 -> Abecedario\$${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/sS/$$/' <<< $NMAY)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}0 -> ABECEDARIO\$${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}0 -> ABECEDARIO\$${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}00 -> ABECEDARIO\$${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}00 -> ABECEDARIO\$${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}000 -> ABECEDARIO\$${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}000 -> ABECEDARIO\$${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}0000 -> ABECEDARIO\$${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}0000 -> ABECEDARIO\$${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}010100 -> ABECEDARIO\$${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}010100 -> ABECEDARIO\$${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS:$1:1}01011950 -> ABECEDARIO\$${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARIO\$${SIMBOLOS}01011950 -> ABECEDARIO\$${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             fi
@@ -994,81 +994,81 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
                 N="$(sed 'y/aA/44/' <<< $NOMBRE)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}0 -> 4beced4rios${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}0 -> 4beced4rios${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}00 -> 4beced4rios${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}00 -> 4beced4rios${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}000 -> 4beced4rios${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}000 -> 4beced4rios${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}0000 -> 4beced4rios${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}0000 -> 4beced4rios${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}010100 -> 4beced4rios${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}010100 -> 4beced4rios${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}01011950 -> 4beced4rios${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}01011950 -> 4beced4rios${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/aA/44/' <<< $NCAP)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}0 -> 4beced4rios${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}0 -> 4beced4rios${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}00 -> 4beced4rios${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}00 -> 4beced4rios${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}000 -> 4beced4rios${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}000 -> 4beced4rios${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}0000 -> 4beced4rios${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}0000 -> 4beced4rios${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}010100 -> 4beced4rios${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}010100 -> 4beced4rios${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS:$1:1}01011050 -> 4beced4rios${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4beced4rios${SIMBOLOS}01011050 -> 4beced4rios${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/aA/44/' <<< $NMAY)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}0 -> 4BECED4RIOS${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}0 -> 4BECED4RIOS${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}00 -> 4BECED4RIOS${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}00 -> 4BECED4RIOS${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}000 -> 4BECED4RIOS${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}000 -> 4BECED4RIOS${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}0000 -> 4BECED4RIOS${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}0000 -> 4BECED4RIOS${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}010100 -> 4BECED4RIOS${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}010100 -> 4BECED4RIOS${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS:$1:1}01011950 -> 4BECED4RIOS${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando '4BECED4RIOS${SIMBOLOS}01011950 -> 4BECED4RIOS${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             fi
@@ -1079,81 +1079,81 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
                 N="$(sed 'y/eE/33/' <<< $NOMBRE)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}0 -> ab3c3darios${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}0 -> ab3c3darios${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}00 -> ab3c3darios${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}00 -> ab3c3darios${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}000 -> ab3c3darios${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}000 -> ab3c3darios${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}0000 -> ab3c3darios${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}0000 -> ab3c3darios${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}010100 -> ab3c3darios${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}010100 -> ab3c3darios${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS:$1:1}01011950 -> ab3c3darios${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ab3c3darios${SIMBOLOS}01011950 -> ab3c3darios${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/eE/33/' <<< $NCAP)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}0 -> Ab3c3darios${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}0 -> Ab3c3darios${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}00 -> Ab3c3darios${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}00 -> Ab3c3darios${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}000 -> Ab3c3darios${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}000 -> Ab3c3darios${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}0000 -> Ab3c3darios${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}0000 -> Ab3c3darios${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}010100 -> Ab3c3darios${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}010100 -> Ab3c3darios${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS:$1:1}01011950 -> Ab3c3darios${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Ab3c3darios${SIMBOLOS}01011950 -> Ab3c3darios${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/eE/33/' <<< $NMAY)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}0 -> AB3C3DARIOS${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}0 -> AB3C3DARIOS${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}00 -> AB3C3DARIOS${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}00 -> AB3C3DARIOS${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}000 -> AB3C3DARIOS${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}000 -> AB3C3DARIOS${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}0000 -> AB3C3DARIOS${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}0000 -> AB3C3DARIOS${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}010100 -> AB3C3DARIOS${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}010100 -> AB3C3DARIOS${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS:$1:1}01011950 -> AB3C3DARIOS${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'AB3C3DARIOS${SIMBOLOS}01011950 -> AB3C3DARIOS${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             fi
@@ -1162,81 +1162,81 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
                 N="$(sed 'y/iI/11/' <<< $NOMBRE)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}0 -> abecedar1os${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}0 -> abecedar1os${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}00 -> abecedar1os${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}00 -> abecedar1os${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}000 -> abecedar1os${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}000 -> abecedar1os${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}0000 -> abecedar1os${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}0000 -> abecedar1os${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}010100 -> abecedar1os${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}010100 -> abecedar1os${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS:$1:1}01011950 -> abecedar1os${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedar1os${SIMBOLOS}01011950 -> abecedar1os${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/iI/11/' <<< $NCAP)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}0 -> Abecedar1os${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}0 -> Abecedar1os${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}00 -> Abecedar1os${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}00 -> Abecedar1os${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}000 -> Abecedar1os${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}000 -> Abecedar1os${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}0000 -> Abecedar1os${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}0000 -> Abecedar1os${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}010100 -> Abecedar1os${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}010100 -> Abecedar1os${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS:$1:1}01011950 -> Abecedar1os${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedar1os${SIMBOLOS}01011950 -> Abecedar1os${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/iI/11/' <<< $NMAY)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}0 -> ABECEDAR1OS${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}0 -> ABECEDAR1OS${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}00 -> ABECEDAR1OS${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}00 -> ABECEDAR1OS${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}000 -> ABECEDAR1OS${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}000 -> ABECEDAR1OS${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}0000 -> ABECEDAR1OS${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}0000 -> ABECEDAR1OS${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}010100 -> ABECEDAR1OS${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}010100 -> ABECEDAR1OS${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS:$1:1}01011950 -> ABECEDAR1OS${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDAR1OS${SIMBOLOS}01011950 -> ABECEDAR1OS${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             fi
@@ -1245,81 +1245,81 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
                 N="$(sed 'y/oO/00/' <<< $NOMBRE)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}0 -> abecedari0s${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}0 -> abecedari0s${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}00 -> abecedari0s${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}00 -> abecedari0s${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}000 -> abecedari0s${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}000 -> abecedari0s${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}0000 -> abecedari0s${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}0000 -> abecedari0s${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}010100 -> abecedari0s${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}010100 -> abecedari0s${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS:$1:1}01011950 -> abecedari0s${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'abecedari0s${SIMBOLOS}01011950 -> abecedari0s${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/oO/00/' <<< $NCAP)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}0 -> Abecedari0s${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}0 -> Abecedari0s${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}00 -> Abecedari0s${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}00 -> Abecedari0s${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}000 -> Abecedari0s${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}000 -> Abecedari0s${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}0000 -> Abecedari0s${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}0000 -> Abecedari0s${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}010100 -> Abecedari0s${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}010100 -> Abecedari0s${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS:$1:1}01011950 -> Abecedari0s${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'Abecedari0s${SIMBOLOS}01011950 -> Abecedari0s${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
                 N="$(sed 'y/oO/00/'<<< $NMAY)"
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}0 -> ABECEDARI0S${SIMBOLOS:$1:1}9'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}0 -> ABECEDARI0S${SIMBOLOS}9'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0..9} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0..9} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}00 -> ABECEDARI0S${SIMBOLOS:$1:1}99'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}00 -> ABECEDARI0S${SIMBOLOS}99'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}000 -> ABECEDARI0S${SIMBOLOS:$1:1}999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}000 -> ABECEDARI0S${SIMBOLOS}999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{000..999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{000..999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}0000 -> ABECEDARI0S${SIMBOLOS:$1:1}9999'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}0000 -> ABECEDARI0S${SIMBOLOS}9999'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{0000..9999} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{0000..9999} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}010100 -> ABECEDARI0S${SIMBOLOS:$1:1}311299'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}010100 -> ABECEDARI0S${SIMBOLOS}311299'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{00..99} | tr [:space:] \\n >> $SALIDA
                 if [ $VERBOSE = 1 ]; then
-                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS:$1:1}01011950 -> ABECEDARI0S${SIMBOLOS:$1:1}31122020'$NOCOL"
+                    echo -e "\t[${SECONDS} s]\t${BLUE}Generando 'ABECEDARI0S${SIMBOLOS}01011950 -> ABECEDARI0S${SIMBOLOS}31122020'$NOCOL"
                 fi
-                echo -e ${N}${SIMBOLOS:$1:1}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
+                echo -e ${N}${SIMBOLOS}{01..31}{01..12}{1950..2020} | tr [:space:] \\n >> $SALIDA
 
 
             fi
