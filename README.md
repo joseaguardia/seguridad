@@ -28,6 +28,10 @@ Aquí se puede consultar todas las combinaciones para el ejemplo 'abecedarios':
 
 ### Versiones
 
+v1.2
+
+- Arreglado problema con los caracteres (solo se generaba para el primero)
+
 v1.1
 - Ahora es posible pasar como entrada palabras en las opciones del comando (-p)
 - Comprobaciones en los parámetros para evitar errores
