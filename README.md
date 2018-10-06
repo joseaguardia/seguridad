@@ -11,13 +11,15 @@ Aquí se puede consultar todas las combinaciones para el ejemplo 'abecedarios':
 ## Uso:
 
 ```
-./genoveva.sh -i inputFile -o outputFile [-v]
-./genoveva.sh -p "uno dos tres" -o outputFile [-v]
+Uso:
+./genoveva.sh -i inputFile -o outputFile [-vs]
+./genoveva.sh -p "uno dos tres"  -o outputFile [-vs]
 
-
--i: archivo de entrada que contiene las palabras base
+-i: archivo de entrada que contienen las palabras base
 -p: listado de palabras entrecomilladas y separadas por espacios
 -o: archivo de salida para el diccionario
+-s: Separa la salida en un archivo por cada palabra de entrada
+    (un archivo de diccionario completo por cada nombre) 
 -v: modo verbose. Muestra las combinaciones creadas
 ```
 
