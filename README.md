@@ -28,17 +28,19 @@ Aquí se puede consultar todas las combinaciones para el ejemplo 'abecedarios':
 
 ### Versiones
 
-v1.2
+v1.3
+- Añadida función para separar la salida en un archivo por cada nombre de entrada.
 
-- Arreglado problema con los caracteres (solo se generaba para el primero)
+v1.2
+- Arreglado problema con los caracteres (solo se generaba para el primero).
 
 v1.1
-- Ahora es posible pasar como entrada palabras en las opciones del comando (-p)
-- Comprobaciones en los parámetros para evitar errores
-- Ajustes visuales
+- Ahora es posible pasar como entrada palabras en las opciones del comando (-p).
+- Comprobaciones en los parámetros para evitar errores.
+- Ajustes visuales.
 
 v1.0
-- Versión base funcional
+- Versión base funcional.
 
 
 ## Extras
