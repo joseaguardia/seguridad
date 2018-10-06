@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.2"
+VERSION="1.3"
 
 clear
 
@@ -16,6 +16,7 @@ KO="[${RED}✗${NOCOL}]"
 #Editar esta variable para quitar/añadir símbolos
 CARACTERES="-_!,.%*+\$"
 
+SPLIT=0
 VERBOSE=0
 SECONDS=0
 COMBOS=17335754    #Combinaciones máximas por palabra
@@ -24,11 +25,13 @@ COMBOS=17335754    #Combinaciones máximas por palabra
 printHelp() {
     echo
     echo "Uso:"
-    echo "$0 -i inputFile -o outputFile [-v]"
-    echo "$0 -p \"uno dos tres\"  -o outputFile [-v]"
+    echo "$0 -i inputFile -o outputFile [-vs]"
+    echo "$0 -p \"uno dos tres\"  -o outputFile [-vs]"
     echo "-i: archivo de entrada que contienen las palabras base"
     echo "-p: listado de palabras entrecomilladas y separadas por espacios"
     echo "-o: archivo de salida para el diccionario"
+    echo "-s: Separa la salida en un archivo por cada palabra de entrada"
+    echo "    (un archivo de diccionario completo por cada nombre) "
     echo "-v: modo verbose. Muestra las combinaciones creadas"
     echo
 }
@@ -38,7 +41,8 @@ printInfo() {
     echo "Desde un listado de palabras, genera 17335754 combinaciones por cada palabra, mezclando minúsculas, capitalizada, "
     echo "mayúsculas, escritura L33T (completa e individual por cada vocal y "s"), reverso, números de 1 a 4 cifras, fechas en formato "
     echo "mmddyyyy de 1950 a 2020, formato de fecha mmddyy, símbolos al final, símbolos entre nombre y fecha..."
-    echo "https://github.com/joseaguardia/GENOVEVA"
+    echo
+    echo -e  "\thttps://github.com/joseaguardia/GENOVEVA \t\t\thttps://twitter.com/jose_a_guardia"
     echo
    }
 
@@ -62,7 +66,7 @@ echo -e "$(tput bold)              ---  Generador de nombres veloz y variado v$V
 
 
 #Pasamos como parámetros las opciones
-    while getopts "p:i:o:v" OPT; do
+    while getopts "p:i:o:vsd" OPT; do
             case $OPT in
                 p) # palabras de entrada
                    #set -f
@@ -73,9 +77,13 @@ echo -e "$(tput bold)              ---  Generador de nombres veloz y variado v$V
                    ENTRADA="$OPTARG"
                    ;;
                 o) # archivo de salida
-                   SALIDA="$OPTARG"
+                   SALIDAORIG="$OPTARG"
+                   ;;
+                s) SPLIT=1
                    ;;
                 v) VERBOSE=1
+                   ;;
+                d|--debug) set -x
                    ;;
                 *) #opciones no reconocidas
                    echo -e "$KO $RED ERROR:$NOCOL opción no reconocida"
@@ -84,6 +92,9 @@ echo -e "$(tput bold)              ---  Generador de nombres veloz y variado v$V
                    ;;
             esac
     done
+
+#Limpiamos la salida de posibles espacios
+SALIDAORIG=$(awk '{$1=$1;print}' <<< "$SALIDAORIG" | tr -d [:space:])
 
 
 #Comprobamos que solo haya un método de entrada
@@ -99,7 +110,7 @@ fi
 
 #Comprobamos si la variable de entrada y salida son válidas:
 if [ -z "$PALABRAS" ]; then
-  if [ -z $ENTRADA ] || [ -z $SALIDA ]; then
+  if [ -z $ENTRADA ] || [ -z $SALIDAORIG ]; then
 
     echo
 	echo -e "$KO ${RED}ERROR:${NOCOL} El archivo de entrada o salida no son válidos"
@@ -123,10 +134,10 @@ if [ -z "$PALABRAS" ]; then
 fi
 
 #Comprobamos si el archivo de salida ya existe
-if [ -f $SALIDA ]; then
+if [ -f $SALIDAORIG ]; then
 
     echo
-    echo -e "$KO ${RED}ERROR:${NOCOL} El archivo de salida $SALIDA ya existe"
+    echo -e "$KO ${RED}ERROR:${NOCOL} El archivo de salida $SALIDAORIG ya existe"
     echo
     printHelp
     exit 1
@@ -135,7 +146,7 @@ fi
 
 
 #Comprobamos permiso de escritura en el directorio de salida
-RUTA=$(dirname $(readlink -f $SALIDA))
+RUTA=$(dirname $(readlink -f $SALIDAORIG))
 if [ ! -w $RUTA ]; then
 
     echo
@@ -179,7 +190,7 @@ echo -e "$OK ${GREEN}[TODO OK!]${NOCOL} Comenzamos a crear el diccionario"
 echo
 echo -e "Palabras de entrada: \t\t$LINEAS"
 echo -e "Combinaciones máximas a crear: $(tput bold)\t$(expr $LINEAS \* $COMBOS ) $(tput sgr0)"
-echo -e "Tamaño de fichero máximo:\t$(expr $LINEAS \* 321)MB"
+echo -e "Tamaño en disco máximo:\t\t$(expr $LINEAS \* 321)MB"
 echo
 
 sleep  5
@@ -190,6 +201,24 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
     do
 
+        #Comprobamos si hay que separar los archivos
+        if [ $SPLIT = 1 ]; then
+            SALIDA="${NOMBRE}_${SALIDAORIG}"
+            #Comprobamos si el archivo de salida ya existe
+            if [ -f ${NOMBRE}_$SALIDAORIG ]; then
+
+                echo
+                echo -e "$KO ${RED}ERROR:${NOCOL} El archivo de salida $SALIDA ya existe"
+                echo
+                printHelp
+                exit 1
+
+            fi
+        else
+            SALIDA="$SALIDAORIG"
+        fi
+
+    
         #En algunos casos tenemos una variable intermedia
         #para que la generación sea mucho más rápida
         NCAP="$(sed -e 's/^./\U&/g; s/ ./\U&/g' <<< $NOMBRE)"
@@ -202,6 +231,7 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
 
         echo -e "$OK Generando combinaciones para $NOMBRE"
         echo
+
 
 
         #Nombre normal, capitalizado, mayúsculas, reverso:
@@ -1326,14 +1356,27 @@ cat $ENTRADA | tr -d " "  | tr "\t" "\n" | tr [:upper:] [:lower:] | grep . | sor
         done
 
 
-    done
+    done || exit 1
 
 
 echo
-echo -e "Palabras generadas: \\t$(tput bold)$(wc -l $SALIDA | awk '{print $1}')$(tput sgr0)"
-echo -e "Tamaño de archivo: \\t$( du -lh $SALIDA | cut -f1)"
-TIEMPO=$(eval "echo $(date -ud "@$SECONDS" +'%Hh %Mm %Ss')")
-echo -e "Tiempo total: \\t\\t$TIEMPO"
-echo
-echo -e "$GREEN Archivo $(readlink -f $SALIDA) generado con éxito $NOCOL"
-echo
+if [ $SPLIT = 1 ]; then
+
+    echo -e "Palabras generadas: \\t$(tput bold)$(wc -l *$SALIDA | tail -1 | awk '{print $1}')$(tput sgr0)"
+    echo -e "Tamaño de archivo: \\t$( du -ach $SALIDA | tail -1 | awk '{print $1}')"
+    TIEMPO=$(eval "echo $(date -ud "@$SECONDS" +'%Hh %Mm %Ss')")
+    echo -e "Tiempo total: \\t\\t$TIEMPO"
+    echo
+    echo -e "$GREEN Archivos generados con éxito $NOCOL"
+    echo
+else
+
+    echo -e "Palabras generadas: \\t$(tput bold)$(wc -l $SALIDA | awk '{print $1}')$(tput sgr0)"
+    echo -e "Tamaño de archivo: \\t$( du -lh $SALIDA | cut -f1)"
+    TIEMPO=$(eval "echo $(date -ud "@$SECONDS" +'%Hh %Mm %Ss')")
+    echo -e "Tiempo total: \\t\\t$TIEMPO"
+    echo
+    echo -e "$GREEN Archivo $(readlink -f $SALIDA) generado con éxito $NOCOL"
+    echo
+fi
+
