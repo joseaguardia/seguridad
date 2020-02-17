@@ -19,7 +19,8 @@ Uso:
 -p: listado de palabras entrecomilladas y separadas por espacios
 -o: archivo de salida para el diccionario
 -s: Separa la salida en un archivo por cada palabra de entrada
-    (un archivo de diccionario completo por cada nombre) 
+    (un archivo de diccionario completo por cada nombre)
+-m: modo mínimo. Genera menos combinaciones por cada palabra    
 -v: modo verbose. Muestra las combinaciones creadas
 ```
 
@@ -29,6 +30,10 @@ Uso:
 
 
 ### Versiones
+
+v1.4
+- Añadida función -m para generar al rededor de un 50% menos de combinaciones (quita todas las 'reverse' y algunos símbolos). De 17335754 máximas por palabra a 8070102)
+- Corregido error por el que el script no terminaba correctamente.
 
 v1.3
 - Añadida función para separar la salida en un archivo por cada nombre de entrada.
