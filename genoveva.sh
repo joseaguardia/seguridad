@@ -201,7 +201,7 @@ echo -e "Palabras de entrada: \t\t$LINEAS"
 if [ $MINIMO = 1 ]; then
     echo -e "ACTIVADO MODO MINIMO. SE SALTARÁN ALGUNAS COMBINACIONES"
     echo -e "Combinaciones máximas a crear (en modo minimo): $(tput bold)\t$(expr $LINEAS \* $COMBOS ) $(tput sgr0)"
-    echo -e "Tamaño en disco máximo (en modo minimo):\t\t$(expr $LINEAS \* 134M)MB"
+    echo -e "Tamaño en disco máximo (en modo minimo):\t\t$(expr $LINEAS \* 134)MB"
 else
     echo -e "Combinaciones máximas a crear (en modo completo): $(tput bold)\t$(expr $LINEAS \* $COMBOS ) $(tput sgr0)"
     echo -e "Tamaño en disco máximo (en modo completo):\t\t$(expr $LINEAS \* 288)MB"
